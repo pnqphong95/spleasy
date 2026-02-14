@@ -1,7 +1,18 @@
 import Link from "next/link";
 import { Zap, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { getDictionary } from "@/get-dictionary";
+import { Locale } from "@/i18n-config";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
       {/* Header */}
@@ -15,21 +26,23 @@ export default function Home() {
           <span className="text-xl font-bold tracking-tight">Spleasy</span>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <Link href="#features" className="hover:text-foreground transition-colors">Features</Link>
-          <Link href="#" className="hover:text-foreground transition-colors">How it Works</Link>
+          <Link href="#features" className="hover:text-foreground transition-colors">{dict.navigation.features}</Link>
+          <Link href="#" className="hover:text-foreground transition-colors">{dict.navigation.howItWorks}</Link>
         </nav>
         <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <ModeToggle />
           <Link
             href="/join"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            Join Group
+            {dict.navigation.joinGroup}
           </Link>
           <Link
             href="/create"
             className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
           >
-            Start Splitting
+            {dict.navigation.startSplitting}
           </Link>
         </div>
       </header>
@@ -45,16 +58,16 @@ export default function Home() {
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 relative z-10">
               <div className="inline-flex items-center rounded-full border border-border bg-background/50 px-3 py-1 text-sm font-medium text-muted-foreground mb-6 backdrop-blur-md shadow-sm">
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-                Spleasy = Split + Easy
+                {dict.home.badge}
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent leading-[1.1]">
-                Split bills instantly. <br />
-                <span className="text-primary block mt-2">No sign-up.</span>
+                {dict.home.title} <br />
+                <span className="text-primary block mt-2">{dict.home.subtitle}</span>
               </h1>
 
               <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg">
-                As the name suggests, we make splitting bills easy. Just create a group, share the link, and start splitting.
+                {dict.home.description}
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -62,14 +75,14 @@ export default function Home() {
                   href="/create"
                   className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/25 group"
                 >
-                  Create a Group
+                  {dict.home.createGroup}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="#demo"
                   className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-border bg-background hover:bg-muted/50 transition-all font-medium flex items-center justify-center"
                 >
-                  View Demo
+                  {dict.home.viewDemo}
                 </Link>
               </div>
             </div>
@@ -99,9 +112,9 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6">
                   <Zap className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Instant Access</h3>
+                <h3 className="text-xl font-bold mb-3">{dict.features.instantAccess.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  No accounts, no passwords, no email verification. Just generate a secure link and share it with your friends to get started immediately.
+                  {dict.features.instantAccess.description}
                 </p>
               </div>
 
@@ -110,9 +123,9 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6">
                   <Users className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Split Easy</h3>
+                <h3 className="text-xl font-bold mb-3">{dict.features.splitEasy.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Add expenses, select who was involved, and let Spleasy calculate the math. Ensure everyone pays exactly what they owe.
+                  {dict.features.splitEasy.description}
                 </p>
               </div>
 
@@ -121,9 +134,9 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Transparent & Safe</h3>
+                <h3 className="text-xl font-bold mb-3">{dict.features.transparentSafe.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Everyone sees the same data in real-time. Secure your group with a PIN code for privacy without complex login flows.
+                  {dict.features.transparentSafe.description}
                 </p>
               </div>
             </div>
@@ -132,7 +145,7 @@ export default function Home() {
 
         {/* Marketing Footer */}
         <footer className="px-6 py-12 text-center text-muted-foreground text-sm">
-          <p>© {new Date().getFullYear()} Spleasy. Built for simplicity.</p>
+          <p>© {new Date().getFullYear()} {dict.footer.copyright}</p>
         </footer>
       </main>
     </div>

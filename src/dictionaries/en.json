@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "title": "Spleasy - Split bills instantly",
+        "description": "The simplest way to track shared expenses without sign-ups."
+    },
+    "navigation": {
+        "features": "Features",
+        "howItWorks": "How it Works",
+        "joinGroup": "Join Group",
+        "startSplitting": "Start Splitting"
+    },
+    "home": {
+        "badge": "Spleasy = Split + Easy",
+        "title": "Split bills instantly.",
+        "subtitle": "No sign-up.",
+        "description": "As the name suggests, we make splitting bills easy. Just create a group, share the link, and start splitting.",
+        "createGroup": "Create a Group",
+        "viewDemo": "View Demo"
+    },
+    "features": {
+        "instantAccess": {
+            "title": "Instant Access",
+            "description": "No accounts, no passwords, no email verification. Just generate a secure link and share it with your friends to get started immediately."
+        },
+        "splitEasy": {
+            "title": "Split Easy",
+            "description": "Add expenses, select who was involved, and let Spleasy calculate the math. Ensure everyone pays exactly what they owe."
+        },
+        "transparentSafe": {
+            "title": "Transparent & Safe",
+            "description": "Everyone sees the same data in real-time. Secure your group with a PIN code for privacy without complex login flows."
+        }
+    },
+    "footer": {
+        "copyright": "Spleasy. Built for simplicity."
+    }
+}
