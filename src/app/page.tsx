@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Zap, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           <Link href="#" className="hover:text-foreground transition-colors">How it Works</Link>
         </nav>
         <div className="flex items-center gap-4">
+          <ModeToggle />
           <Link
             href="/join"
             className="text-sm font-medium hover:text-primary transition-colors"
