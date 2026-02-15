@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "title": "Spleasy - Split bills instantly",
+    "description": "The simplest way to track shared expenses without sign-ups.",
+    "ogTitle": "Split bills instantly. No sign-up.",
+    "ogDescription": "As the name suggests, we make splitting bills easy. Just create a group, share the link, and start splitting.",
+    "keywords": [
+      "split bills",
+      "bill splitter",
+      "expense tracker",
+      "group expenses",
+      "shared finance",
+      "split costs"
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How to split money when traveling in a group without mistakes?",
+        "answer": "Use Spleasy to enter expenses as they happen. Who paid? For whom? The app automatically calculates precise debt balances so you only need one transfer at the end of the trip."
+      },
+      {
+        "question": "Why use Spleasy instead of a notebook?",
+        "answer": "Notebooks are prone to errors and make cross-calculations difficult (A paid for B, B paid for C). Spleasy automatically optimizes transactions, reducing the number of necessary transfers."
+      }
+    ]
+  },
+  "navigation": {
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "joinGroup": "Join Group",
+    "startSplitting": "Start Splitting",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "home": {
+    "badge": "Spleasy = Split + Easy",
+    "title": "Split bills instantly.",
+    "subtitle": "No sign-up.",
+    "description": "As the name suggests, we make splitting bills easy. Just create a group, share the link, and start splitting.",
+    "createGroup": "Create a Group",
+    "viewDemo": "View Demo"
+  },
+  "features": {
+    "instantAccess": {
+      "title": "Instant Access",
+      "description": "No accounts, no passwords, no email verification. Just generate a secure link and share it with your friends to get started immediately."
+    },
+    "splitEasy": {
+      "title": "Split Easy",
+      "description": "Add expenses, select who was involved, and let Spleasy calculate the math. Ensure everyone pays exactly what they owe."
+    },
+    "transparentSafe": {
+      "title": "Transparent & Safe",
+      "description": "Everyone sees the same data in real-time. Secure your group with a PIN code for privacy without complex login flows."
+    }
+  },
+  "footer": {
+    "copyright": "Spleasy. Built for simplicity."
+  }
+}

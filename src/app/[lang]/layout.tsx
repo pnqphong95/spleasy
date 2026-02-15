@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import "../globals.css";
-import { i18n } from "@/i18n-config";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme-provider';
+import '../globals.css';
+import { i18n } from '@/i18n/config';
+import { getDictionary } from '@/i18n/get-dictionary';
+import type { Locale } from '@/i18n/config';
+import { SITE_URL } from '@/lib/constants';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export async function generateMetadata({
@@ -20,9 +19,8 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  // @ts-ignore
-  const dict = await import(`@/dictionaries/${lang}.json`).then((m) => m.default);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://spleasy.vercel.app";
+  const dict = await getDictionary(lang as Locale);
+  const baseUrl = SITE_URL;
 
   return {
     title: {
@@ -43,17 +41,17 @@ export async function generateMetadata({
       title: dict.metadata.ogTitle,
       description: dict.metadata.ogDescription,
       url: `/${lang}`,
-      siteName: "Spleasy",
+      siteName: 'Spleasy',
       locale: lang,
-      type: "website",
+      type: 'website',
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: dict.metadata.ogTitle,
       description: dict.metadata.ogDescription,
     },
     icons: {
-      icon: "/spleasy-icon.svg",
+      icon: '/spleasy-icon.svg',
     },
   };
 }
@@ -72,10 +70,7 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
-      >
+      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
