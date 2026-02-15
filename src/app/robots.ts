@@ -1,14 +1,15 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/constants';
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://spleasy.vercel.app'
+  const baseUrl = SITE_URL;
 
-    return {
-        rules: {
-            userAgent: '*',
-            allow: '/',
-            disallow: '/private/',
-        },
-        sitemap: `${baseUrl}/sitemap.xml`,
-    }
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/',
+    },
+    sitemap: `${baseUrl}/sitemap.xml`,
+  };
 }
