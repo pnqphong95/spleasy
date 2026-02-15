@@ -1,7 +1,30 @@
 {
     "metadata": {
         "title": "Spleasy - Split bills instantly",
-        "description": "The simplest way to track shared expenses without sign-ups."
+        "description": "The simplest way to track shared expenses without sign-ups.",
+        "ogTitle": "Stop doing math, start Spleasy-ing.",
+        "ogDescription": "The only bill splitter that requires ZERO sign-ups. Split dinner, trips, and rent in seconds.",
+        "keywords": [
+            "split bills",
+            "bill splitter",
+            "expense tracker",
+            "group expenses",
+            "shared finance",
+            "split costs"
+        ]
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "items": [
+            {
+                "question": "How to split money when traveling in a group without mistakes?",
+                "answer": "Use Spleasy to enter expenses as they happen. Who paid? For whom? The app automatically calculates precise debt balances so you only need one transfer at the end of the trip."
+            },
+            {
+                "question": "Why use Spleasy instead of a notebook?",
+                "answer": "Notebooks are prone to errors and make cross-calculations difficult (A paid for B, B paid for C). Spleasy automatically optimizes transactions, reducing the number of necessary transfers."
+            }
+        ]
     },
     "navigation": {
         "features": "Features",
