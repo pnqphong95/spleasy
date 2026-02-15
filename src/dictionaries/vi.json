@@ -1,7 +1,30 @@
 {
     "metadata": {
         "title": "Spleasy - Chia hóa đơn tức thì",
-        "description": "Cách đơn giản nhất để theo dõi chi phí chung mà không cần đăng ký."
+        "description": "Cách đơn giản nhất để theo dõi chi phí chung mà không cần đăng ký.",
+        "ogTitle": "Đừng lo tính toán, đã có Spleasy.",
+        "ogDescription": "Công cụ chia tiền duy nhất KHÔNG cần đăng ký. Chia tiền ăn, du lịch, tiền nhà chỉ trong vài giây.",
+        "keywords": [
+            "chia tiền",
+            "chia hóa đơn",
+            "split bills",
+            "quản lý chi tiêu nhóm",
+            "tính tiền hộ",
+            "app chia tiền"
+        ]
+    },
+    "faq": {
+        "title": "Câu hỏi thường gặp",
+        "items": [
+            {
+                "question": "Cách chia tiền khi đi du lịch nhóm không bị nhầm lẫn?",
+                "answer": "Sử dụng Spleasy để nhập chi phí ngay khi phát sinh. Ai trả tiền? Cho ai? Ứng dụng sẽ tự động tính toán số dư nợ chính xác để cuối chuyến đi chỉ cần một lần chuyển khoản."
+            },
+            {
+                "question": "Tại sao nên dùng Spleasy thay vì ghi sổ tay?",
+                "answer": "Ghi sổ tay dễ nhầm lẫn và khó tính toán chéo (A trả cho B, B trả cho C). Spleasy tự động tối ưu hóa các giao dịch, giúp giảm số lượng lần chuyển tiền cần thiết."
+            }
+        ]
     },
     "navigation": {
         "features": "Tính năng",

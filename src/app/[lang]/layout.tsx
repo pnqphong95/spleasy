@@ -22,6 +22,7 @@ export async function generateMetadata({
   const { lang } = await params;
   // @ts-ignore
   const dict = await import(`@/dictionaries/${lang}.json`).then((m) => m.default);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://spleasy.vercel.app";
 
   return {
     title: {
@@ -29,10 +30,18 @@ export async function generateMetadata({
       default: dict.metadata.title,
     },
     description: dict.metadata.description,
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://spleasy.vercel.app"),
+    keywords: dict.metadata.keywords,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `/${lang}`,
+      languages: {
+        'vi-VN': '/vi',
+        'en-US': '/en',
+      },
+    },
     openGraph: {
-      title: dict.metadata.title,
-      description: dict.metadata.description,
+      title: dict.metadata.ogTitle,
+      description: dict.metadata.ogDescription,
       url: `/${lang}`,
       siteName: "Spleasy",
       locale: lang,
@@ -40,8 +49,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: dict.metadata.title,
-      description: dict.metadata.description,
+      title: dict.metadata.ogTitle,
+      description: dict.metadata.ogDescription,
     },
     icons: {
       icon: "/spleasy-icon.svg",

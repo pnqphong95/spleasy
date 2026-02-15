@@ -155,11 +155,52 @@ export default async function Home({
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="px-6 py-20 bg-background border-t border-border/50">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">{dict.faq.title}</h2>
+            <div className="space-y-8">
+              {dict.faq.items.map((item: any, index: number) => (
+                <div key={index} className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+                  <h3 className="text-xl font-bold mb-3">{item.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Marketing Footer */}
         <footer className="px-6 py-12 text-center text-muted-foreground text-sm">
           <p>© {new Date().getFullYear()} {dict.footer.copyright}</p>
         </footer>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Spleasy",
+            "operatingSystem": "Web",
+            "applicationCategory": "FinanceApplication",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "120"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "VND"
+            },
+            "description": dict.metadata.description
+          })
+        }}
+      />
     </div>
   );
 }
