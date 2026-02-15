@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Zap, Users, ShieldCheck, ArrowRight } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { MobileNav } from "@/components/mobile-nav";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
 
@@ -29,7 +30,7 @@ export default async function Home({
           <Link href="#features" className="hover:text-foreground transition-colors">{dict.navigation.features}</Link>
           <Link href="#" className="hover:text-foreground transition-colors">{dict.navigation.howItWorks}</Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4">
           <LanguageSwitcher />
           <ModeToggle />
           <Link
@@ -45,11 +46,22 @@ export default async function Home({
             {dict.navigation.startSplitting}
           </Link>
         </div>
+
+        {/* Mobile Header Actions */}
+        <div className="flex md:hidden items-center gap-2">
+          <Link
+            href="/create"
+            className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 whitespace-nowrap"
+          >
+            {dict.navigation.startSplitting}
+          </Link>
+          <MobileNav dict={dict} />
+        </div>
       </header>
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative px-6 pt-20 pb-32 md:pt-32 md:pb-40 flex flex-col items-center text-center overflow-hidden max-w-7xl mx-auto">
+        <section className="relative px-4 md:px-6 pt-20 pb-32 md:pt-32 md:pb-40 flex flex-col items-center text-center overflow-hidden max-w-7xl mx-auto">
           {/* Background blending element */}
           <div className="absolute top-0 right-0 -z-10 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/4"></div>
           <div className="absolute bottom-0 left-0 -z-10 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/4"></div>
@@ -61,12 +73,12 @@ export default async function Home({
                 {dict.home.badge}
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent leading-[1.1] text-balance">
                 {dict.home.title} <br />
                 <span className="text-primary block mt-2">{dict.home.subtitle}</span>
               </h1>
 
-              <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg">
+              <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg text-balance">
                 {dict.home.description}
               </p>
 
