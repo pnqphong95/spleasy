@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
 import { i18n } from '@/i18n/config';
@@ -71,6 +72,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+        <NextTopLoader showSpinner={false} color="var(--primary)" />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
