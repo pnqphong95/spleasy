@@ -7,7 +7,9 @@
         "features": "Features",
         "howItWorks": "How it Works",
         "joinGroup": "Join Group",
-        "startSplitting": "Start Splitting"
+        "startSplitting": "Start Splitting",
+        "language": "Language",
+        "theme": "Theme"
     },
     "home": {
         "badge": "Spleasy = Split + Easy",

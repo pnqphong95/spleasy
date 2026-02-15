@@ -7,7 +7,9 @@
         "features": "Tính năng",
         "howItWorks": "Hướng dẫn",
         "joinGroup": "Vào nhóm",
-        "startSplitting": "Chia tiền ngay"
+        "startSplitting": "Chia tiền ngay",
+        "language": "Ngôn ngữ",
+        "theme": "Giao diện"
     },
     "home": {
         "badge": "Spleasy = Sẻ chia + Siêu dễ",
