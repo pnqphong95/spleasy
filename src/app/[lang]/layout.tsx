@@ -14,13 +14,40 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Spleasy - Split bills instantly",
-  description: "The simplest way to track shared expenses without sign-ups.",
-  icons: {
-    icon: "/spleasy-icon.svg",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  // @ts-ignore
+  const dict = await import(`@/dictionaries/${lang}.json`).then((m) => m.default);
+
+  return {
+    title: {
+      template: `%s | Spleasy`,
+      default: dict.metadata.title,
+    },
+    description: dict.metadata.description,
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://spleasy.vercel.app"),
+    openGraph: {
+      title: dict.metadata.title,
+      description: dict.metadata.description,
+      url: `/${lang}`,
+      siteName: "Spleasy",
+      locale: lang,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.metadata.title,
+      description: dict.metadata.description,
+    },
+    icons: {
+      icon: "/spleasy-icon.svg",
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
