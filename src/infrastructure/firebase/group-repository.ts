@@ -1,5 +1,16 @@
 import { db } from './config';
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  query,
+  collection,
+  where,
+  getDocs,
+  limit,
+} from 'firebase/firestore';
 import { IGroupService } from '../../services/group';
 import { Group, Member } from '../../types';
 
@@ -66,6 +77,16 @@ export class GroupRepository implements IGroupService {
     await updateDoc(groupRef, {
       members: arrayUnion(newMember),
     });
+  }
+
+  async findGroupIdByPin(pin: string): Promise<string | null> {
+    const q = query(collection(db, 'groups'), where('pin', '==', pin), limit(1));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return querySnapshot.docs[0].id;
+    }
+    return null;
   }
 }
 

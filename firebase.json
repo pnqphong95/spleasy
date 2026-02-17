@@ -4,11 +4,6 @@
       "database": "(default)",
       "rules": "firestore.rules",
       "indexes": "firestore.indexes.json"
-    },
-    {
-      "database": "spleasy-prod-db",
-      "rules": "firestore.rules",
-      "indexes": "firestore.indexes.json"
     }
   ]
 }

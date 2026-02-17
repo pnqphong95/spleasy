@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { groupService } from '@/infrastructure/firebase/group-repository';
+import { useSession } from '@/hooks/use-session';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -53,14 +54,15 @@ const getRandomGroupName = () => {
 
 export function CreateGroupForm({ lang }: { lang: string }) {
   const router = useRouter();
+  const { saveSession } = useSession();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
-  const [placeholderName, setPlaceholderName] = useState('');
+  const [placeholderName] = useState(() => getRandomGroupName());
 
   // Set a random placeholder on client mount
   useEffect(() => {
-    setPlaceholderName(getRandomGroupName());
+    // Placeholder already set via initializer
   }, []);
 
   const handleCreate = async (e: React.FormEvent) => {
@@ -73,21 +75,17 @@ export function CreateGroupForm({ lang }: { lang: string }) {
       const finalGroupName = name.trim() || placeholderName;
 
       const group = await groupService.createGroup(finalGroupName, username.trim());
-      // Store session in localStorage
-      const session = {
+
+      saveSession({
         groupId: group.id,
         groupName: group.name,
         userName: username.trim(),
         lastAccessed: Date.now(),
-      };
-
-      const existingSessions = JSON.parse(localStorage.getItem('spleasy_session') || '[]');
-      localStorage.setItem('spleasy_session', JSON.stringify([...existingSessions, session]));
+      });
 
       router.push(`/${lang}/groups/${group.id}`);
     } catch (error) {
       console.error('Failed to create group:', error);
-      // TODO: Show toast error
     } finally {
       setLoading(false);
     }
@@ -96,7 +94,7 @@ export function CreateGroupForm({ lang }: { lang: string }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Create a new group</CardTitle>
+        <CardTitle className="font-heading text-2xl">Create a new group</CardTitle>
         <CardDescription>Start managing expenses instantly.</CardDescription>
       </CardHeader>
       <form onSubmit={handleCreate}>
@@ -125,8 +123,6 @@ export function CreateGroupForm({ lang }: { lang: string }) {
           </div>
         </CardContent>
         <CardFooter className="pt-2">
-          {' '}
-          {/* Added spacing */}
           <Button type="submit" className="w-full" disabled={loading || !username.trim()}>
             {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             Start Spleasing

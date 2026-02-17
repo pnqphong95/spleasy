@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CreateGroupForm } from '@/components/groups/create-group-form';
+import { JoinGroupForm } from '@/components/groups/join-group-form';
 
 export default async function GroupsPage({
   params,
@@ -9,8 +10,9 @@ export default async function GroupsPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { lang } = await params;
-  const { tab } = await searchParams;
-  const defaultTab = typeof tab === 'string' && ['create', 'join'].includes(tab) ? tab : 'create';
+  const { tab, pin } = await searchParams;
+  const defaultTab =
+    typeof tab === 'string' && ['create', 'join'].includes(tab) ? tab : pin ? 'join' : 'create';
 
   return (
     <div className="container mx-auto flex min-h-screen items-center justify-center px-4">
@@ -29,9 +31,11 @@ export default async function GroupsPage({
             <CreateGroupForm lang={lang} />
           </TabsContent>
           <TabsContent value="join">
-            <div className="text-muted-foreground bg-muted/50 rounded-lg p-4 text-center">
-              Join functionality coming in Feature 2.
-            </div>
+            <JoinGroupForm
+              key={typeof pin === 'string' ? pin : 'empty'}
+              lang={lang}
+              initialPin={typeof pin === 'string' ? pin : ''}
+            />
           </TabsContent>
         </Tabs>
       </div>

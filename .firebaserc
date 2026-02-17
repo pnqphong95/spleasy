@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "spleasy-dev",
+    "default": "spleasy-prod",
+    "dev": "spleasy-dev",
     "prod": "spleasy-prod"
   },
   "targets": {},
