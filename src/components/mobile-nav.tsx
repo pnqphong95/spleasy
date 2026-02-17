@@ -34,7 +34,7 @@ export function MobileNav({ dict }: MobileNavProps) {
           <SheetTitle className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/spleasy-icon.svg" alt="Spleasy Logo" className="h-full w-full" />
+              <img src="/icon-universal.svg" alt="Spleasy Logo" className="h-full w-full" />
             </div>
             <span className="text-xl font-bold tracking-tight">Spleasy</span>
           </SheetTitle>

@@ -32,6 +32,10 @@ export interface Dictionary {
     viewDemo: string;
   };
   features: {
+    header: {
+      title: string;
+      description: string;
+    };
     instantAccess: {
       title: string;
       description: string;

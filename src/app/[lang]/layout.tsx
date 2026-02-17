@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
@@ -10,7 +10,13 @@ import { SITE_URL } from '@/lib/constants';
 
 const inter = Inter({
   variable: '--font-inter',
-  subsets: ['latin'],
+  subsets: ['latin', 'vietnamese'],
+  display: 'swap',
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  variable: '--font-heading',
+  subsets: ['latin', 'vietnamese'],
   display: 'swap',
 });
 
@@ -52,7 +58,8 @@ export async function generateMetadata({
       description: dict.metadata.ogDescription,
     },
     icons: {
-      icon: '/spleasy-icon.svg',
+      icon: '/icon-universal.svg',
+      apple: '/icon-universal.svg',
     },
   };
 }
@@ -71,7 +78,7 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${jakarta.variable} antialiased`} suppressHydrationWarning>
         <NextTopLoader showSpinner={false} color="var(--primary)" />
         <ThemeProvider
           attribute="class"

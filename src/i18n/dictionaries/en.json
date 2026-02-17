@@ -43,6 +43,10 @@
     "viewDemo": "View Demo"
   },
   "features": {
+    "header": {
+      "title": "Everything you need",
+      "description": "Powerful features wrapped in a simple design."
+    },
     "instantAccess": {
       "title": "Instant Access",
       "description": "No accounts, no passwords, no email verification. Just generate a secure link and share it with your friends to get started immediately."
