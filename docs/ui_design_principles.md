@@ -29,8 +29,8 @@
 
 We pair a geometric display font with a utilitarian body font for a premium "Fintech" feel.
 
-### Headings: **Outfit** (or Plus Jakarta Sans)
-*Geometric, friendly, modern.*
+### Headings: **Plus Jakarta Sans**
+*Geometric, friendly, modern, great Vietnamese support.*
 -   **Heroes**: `text-5xl` font-bold (Balance Displays).
 -   **Titles**: `text-2xl` font-semibold (Page Headers).
 

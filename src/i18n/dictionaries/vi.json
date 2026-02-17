@@ -43,6 +43,10 @@
     "viewDemo": "Xem demo"
   },
   "features": {
+    "header": {
+      "title": "Tất cả những gì bạn cần",
+      "description": "Tính năng mạnh mẽ trong một thiết kế đơn giản."
+    },
     "instantAccess": {
       "title": "Truy cập tức thì",
       "description": "Không tài khoản, không mật khẩu, không xác thực email. Chỉ cần tạo một liên kết bảo mật và chia sẻ với bạn bè để bắt đầu ngay lập tức."
