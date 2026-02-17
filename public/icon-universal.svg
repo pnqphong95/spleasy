@@ -1,0 +1,19 @@
+<svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Rounded Rectangle (Squircle) - Primary: oklch(0.55 0.22 276.0) -->
+  <rect x="0" y="0" width="100" height="100" rx="20" fill="oklch(0.55 0.22 276.0)"/>
+
+  <!-- Logo Content (White Petals) - Foreground: oklch(1 0 0) -->
+  <g transform="translate(0, 0)"> 
+      <!-- Top Right Petal -->
+      <path d="M50 50 C50 50 90 50 90 20 C90 -10 50 -10 50 50" fill="oklch(1 0 0)"/>
+      
+      <!-- Bottom Right Petal -->
+      <path d="M50 50 C50 50 50 90 80 90 C110 90 110 50 50 50" fill="oklch(1 0 0)"/>
+      
+      <!-- Bottom Left Petal -->
+      <path d="M50 50 C50 50 10 50 10 80 C10 110 50 110 50 50" fill="oklch(1 0 0)"/>
+      
+      <!-- Top Left Petal -->
+      <path d="M50 50 C50 50 50 10 20 10 C-10 10 -10 50 50 50" fill="oklch(1 0 0)"/>
+  </g>
+</svg>

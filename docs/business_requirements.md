@@ -26,10 +26,10 @@ This flow replaces the traditional "Sign Up / Log In" process.
 
 | ID | Feature Name | Detailed Description |
 | :--- | :--- | :--- |
-| **F1.1** | **Create New Group** | - User inputs **Group Name** (e.g., "Da Lat Trip 2026").<br>- (Optional) User sets a **4-digit PIN** for basic security.<br>- System generates a unique `Session ID` / Slug. |
-| **F1.2** | **Share Group** | - Generate a unique URL: `spleasy.app/g/<group-id>`.<br>- "Copy Link" button for easy sharing via messaging apps (Zalo/Messenger/WhatsApp). |
-| **F1.3** | **Join Group (Link)** | - **Scenario A (New User):** Prompt for Display Name (and PIN). Store identity in `LocalStorage`.<br>- **Scenario B (Returning):** Check `LocalStorage`. If session exists, welcome user back and skip setup. |
-| **F1.4** | **Join Group (Manual)** | - User enters Group ID + PIN + Display Name manually from Home Screen. |
+| **F1.1** | **Create New Group** | - **Mandatory:** User Name (Group Initiator).<br>- **Optional:** Group Name (Auto-generated "Da Lat Trip" if empty).<br>- **System Auto-generates:**<br>  + **Group PIN:** 6-digit numeric (Shareable).<br>  + **Group ID:** UUID (Technical, hidden).<br>  + **Members List:** Initiator added as first member.<br>  + **Currency:** Default (VND).<br>  + **Audit:** CreatedAt timestamp. |
+| **F1.2** | **Share Group** | - Share via **Link** (`spleasy.app/g/<group-id>`) OR **6-digit PIN**.<br>- "Copy Link" / "Copy PIN" buttons. |
+| **F1.3** | **Join Group (Link)** | - User clicks link -> Redirect to App.<br>- **Screen:** Unified Join Form.<br>- **Pre-filled:** Group PIN (from URL).<br>- **Input:** User Name.<br>- **Validation:** If Group ID/PIN invalid -> Show "Group not exist" -> Fallback to Manual Join. |
+| **F1.4** | **Join Group (Manual)** | - User inputs **Group PIN** + **User Name**.<br>- **Validation:** Check PIN against DB.<br>  + **Success:** Add session to LocalStorage (`[{ groupId, userName }]`) -> Redirect to Dashboard.<br>  + **Fail:** Show "Group not exist". |
 | **F1.5** | **Leave Group** | - "Exit" button to clear user identity from the current browser session. |
 
 ### 2.2. Expense Tracking

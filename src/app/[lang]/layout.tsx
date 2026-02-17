@@ -52,7 +52,8 @@ export async function generateMetadata({
       description: dict.metadata.ogDescription,
     },
     icons: {
-      icon: '/spleasy-icon.svg',
+      icon: '/icon-universal.svg',
+      apple: '/icon-universal.svg',
     },
   };
 }

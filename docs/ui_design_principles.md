@@ -27,8 +27,8 @@ We utilize the **OKLCH** color space for consistent perceived lightness across t
 *   **Border**: `oklch(0.92 0.004 286.32)` (Zinc 200) - Used sparingly.
 
 ### Primary Accent: "Electric Indigo"
-*   **Primary**: `oklch(0.558 0.235 285.805)` (Violet 600) - Solid buttons, active states.
-*   **Primary Light**: `oklch(0.967 0.001 286.375)` (Violet 50) - Backgrounds for active items.
+*   **Primary**: `oklch(0.55 0.22 276.0)` (Electric Indigo) - Solid buttons, active states.
+*   **Primary Light**: `oklch(0.967 0.001 286.375)` (Zinc 50) - Backgrounds for active items.
 
 ### Functional Colors
 *   **Success**: Emerald 500 - Settled debts.

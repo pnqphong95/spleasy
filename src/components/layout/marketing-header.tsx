@@ -15,7 +15,7 @@ export function MarketingHeader({ dict }: MarketingHeaderProps) {
       <div className="flex items-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center">
           <Image
-            src="/spleasy-icon.svg"
+            src="/icon-universal.svg"
             alt="Spleasy Logo"
             width={32}
             height={32}

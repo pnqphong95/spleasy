@@ -25,16 +25,16 @@ Document ID: `groupId` (NanoID or Slug)
 
 ```typescript
 interface Group {
-  id: string;              // Unique Session ID
-  name: string;            // "Da Lat Trip"
-  normalizeName: string;   // "da lat trip" (for search if needed)
-  pin?: string;            // Optional 4-digit PIN
+  id: string;              // Unique UUID (Technical ID, Hidden)
+  name: string;            // "Da Lat Trip" (or auto-generated)
+  normalizeName: string;   // "da lat trip"
+  pin: string;             // 6-digit numeric PIN (Shareable ID)
   createdAt: Timestamp;
   updatedAt: Timestamp;
   currency: string;        // Default "VND"
   
-  // MEMBER MANAGEMENT (Updated Requirement)
-  // We store a centralized list of members to populate dropdowns
+  // MEMBER MANAGEMENT
+  // First member is the Initiator/Owner
   members: Member[];       
 }
 
@@ -64,6 +64,19 @@ interface Expense {
   createdAt: number;       // Date.now() from server
   createdBy: string;       // Member.id of who entered it
 }
+
+### 3.3. Local Storage Schema (Client Side)
+Key: `spleasy_session`
+Value: JSON String of `UserSession[]`
+
+```typescript
+interface UserSession {
+  groupId: string;    // Matches Group.id
+  groupName: string;  // Cached for UI
+  userName: string;   // "Alice"
+  lastAccessed: number; // Timestamp
+}
+```
 ```
 
 ## 4. Architecture: Repository Pattern
