@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
@@ -10,6 +10,12 @@ import { SITE_URL } from '@/lib/constants';
 
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  variable: '--font-outfit',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -72,7 +78,7 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${outfit.variable} antialiased`} suppressHydrationWarning>
         <NextTopLoader showSpinner={false} color="var(--primary)" />
         <ThemeProvider
           attribute="class"

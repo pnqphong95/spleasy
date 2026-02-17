@@ -1,97 +1,113 @@
-# Spleasy - UI Design Principles & Design System
+# Spleasy Design System 2.0: "The Trendy Boutique"
 
-> "Simplicity is the ultimate sophistication." - Leonardo da Vinci
-
-## 1. Core Design Philosophy: Modern Minimalism ("Invisible Utility")
-
-For Spleasy, our design philosophy centers on **"Invisible Utility"**. The app should feel less like a tool you have to learn and more like a natural extension of a group's conversation.
-
-### Guiding Principles
-1.  **Content Over Chrome**: Remove unnecessary borders, shadows, and containers. Let the data (expenses, names, balances) breathe with ample whitespace.
-2.  **Radical Simplicity**: If an element doesn't help the user *split a bill* or *get paid*, it doesn't belong on the screen.
-3.  **Thumb-Driven Ergonomics**: Primary actions (Add Expense, Settle Up) are placed in a fixed **Bottom Bar** for easy access.
-4.  **Optimistic & Fluid**: Interactions should feel instant. Use micro-animations to confirm actions without blocking flow.
-5.  **Clarity via Contrast**: Use typography weight and background contrast to create hierarchy, rather than heavy borders.
+> **Philosophy**: "Invisible Utility meets Bento Clarity."
+> We combine the radical simplicity of *Invisible Utility* with the warmth and structure of modern *Bento Grids*.
 
 ---
 
-## 2. Color System (OKLCH)
+## 1. Core Principles
 
-We utilize the **OKLCH** color space for consistent perceived lightness across the application.
+1.  **Mobile-First & Thumb-Driven**: 
+    -   Navigation and primary actions (Add Expense, Settle) live in the **bottom 30%** of the screen.
+    -   Top of screen is for Viewing (Balance, Charts), Bottom is for Acting.
 
-### Base Composition
-*   **Background**: `oklch(0.985 0 0)` (Zinc 50) - Soft off-white to reduce glare.
-*   **Surface**: `oklch(1 0 0)` (White) - Used for cards and modals.
-*   **Text Primary**: `oklch(0.141 0.005 285.823)` (Zinc 900) - High contrast for readability.
-*   **Text Muted**: `oklch(0.552 0.016 285.938)` (Zinc 500) - Metadata and supporting text.
-*   **Border**: `oklch(0.92 0.004 286.32)` (Zinc 200) - Used sparingly.
+2.  **Bento Grid Layouts**: 
+    -   Data isn't just a list; it's organized into glanceable, beautiful blocks.
+    -   *Example*: A large square block for "Total Balance", rectangular blocks for "Recent Activity".
 
-### Primary Accent: "Electric Indigo"
-*   **Primary**: `oklch(0.55 0.22 276.0)` (Electric Indigo) - Solid buttons, active states.
-*   **Primary Light**: `oklch(0.967 0.001 286.375)` (Zinc 50) - Backgrounds for active items.
+3.  **Invisible Containers**: 
+    -   Borders are largely removed in favor of **Soft Backgrounds** (`bg-zinc-50` or `bg-white/50`).
+    -   Separation is created by whitespace and color blocks, not lines.
 
-### Functional Colors
-*   **Success**: Emerald 500 - Settled debts.
-*   **Destructive**: Rose 500 - Deletions and "You owe" states.
-*   **Warning**: Amber 500 - Pending alerts.
+4.  **Optimistic & Fluid**: 
+    -   Every interaction has a micro-animation.
+    -   Swiping, tapping, and paying feels "juicy" (haptic feedback + spring physics).
 
 ---
 
-## 3. Typography
+## 2. Typography
 
-**Font Family**: `Inter` (sans-serif).
-**Numbers**: `tabular-nums` is **MANDATORY** for all financial data to ensure vertical alignment.
+We pair a geometric display font with a utilitarian body font for a premium "Fintech" feel.
 
-| Scale | Style | Usage |
-| :--- | :--- | :--- |
-| **Display** | `text-4xl` to `text-6xl` font-bold tracking-tighter | Hero amounts, total balances. |
-| **Heading** | `text-2xl` font-semibold tracking-tight | Page titles. |
-| **Subheading** | `text-lg` font-medium | Card titles. |
-| **Body** | `text-base` font-normal leading-relaxed | Default text. |
-| **Label** | `text-xs` font-semibold uppercase tracking-wider | Badges, small metadata. |
+### Headings: **Outfit** (or Plus Jakarta Sans)
+*Geometric, friendly, modern.*
+-   **Heroes**: `text-5xl` font-bold (Balance Displays).
+-   **Titles**: `text-2xl` font-semibold (Page Headers).
 
----
+### Body: **Inter**
+*Clean, neutral, highly legible.*
+-   **Body**: `text-base` font-normal (Transaction details).
+-   **Mono**: `Geist Mono` (Financial data tables).
 
-## 4. Component Guidelines
-
-### Style Decision: Flat & Airy
-We have adopted the **Flat & Airy** style.
-*   **Borders**: Minimal to none.
-*   **Separation**: Achieved through whitespace and subtle background colors (`bg-zinc-50/50`).
-*   **Shadows**: Very soft or non-existent (`shadow-none` or `shadow-sm`).
-
-### Buttons
-*   **Shape**: `rounded-full` (Pill).
-*   **Height**: `h-12` (48px) for primary actions to ensure easy touch targets.
-*   **Primary**: Solid Electric Indigo background.
-*   **Secondary**: Ghost or widely spaced outline.
-
-### Cards
-*   **Shape**: `rounded-[1.25rem]` (20px) for a friendly, modern feel.
-*   **Background**: `bg-zinc-50/50` (Light) / `bg-zinc-900/50` (Dark).
-*   **Border**: None (or extremely subtle `border-transparent`).
-
-### Inputs
-*   **Style**: Minimalist. `border-b` (Underline) or transparent backgrounds for smooth "form-filling" experience.
-*   **Focus**: Soft ring, no jarring color shifts.
+> **Rule**: Use `tabular-nums` for ALL numbers to ensure alignment.
 
 ---
 
-## 5. Layout & Spacing
+## 3. Color System (OKLCH)
 
-*   **Mobile-First**: All designs assume a mobile viewport first.
-*   **Container**: Max-width restricted on desktop to maintain app-like focus.
-*   **Touch Targets**: Minimum **44x44px** for all interactive elements.
-*   **Spacing Unit**: 4px (Tailwind standard).
-*   **Section Padding**: Generous vertical padding (`py-24` or `py-32`) to create a breathable layout.
+We use **OKLCH** for perceptual uniformity. The palette is "Calm but Confident."
+
+### Primary Brand
+-   **Electric Indigo**: `oklch(0.55 0.22 276.0)`
+    -   *Usage*: Primary Buttons, Active States, Brand Icons.
+-   **Soft Indigo**: `oklch(0.96 0.01 276.0)`
+    -   *Usage*: Tinted backgrounds for active items.
+
+### Semantic Colors ("The Money Logic")
+Moved away from standard "Traffic Light" colors to more modern, softer hues.
+
+-   **Money In (You are owed)**: **Mint / Teal**
+    -   Value: `oklch(0.7 0.14 160)`
+    -   *Vibe*: "Relaxed, money is coming."
+-   **Money Out (You owe)**: **Coral / Rose**
+    -   Value: `oklch(0.65 0.18 15)`
+    -   *Vibe*: "Urgent but polite."
+-   **Settled**: **Slate / Zinc**
+    -   Value: `oklch(0.6 0.04 260)`
+
+### Backgrounds
+-   **Light Mode**:
+    -   App BG: `oklch(0.985 0 0)` (Soft Zinc 50) - Not harsh white.
+    -   Card BG: `oklch(1 0 0)` (Pure White).
+-   **Dark Mode**:
+    -   App BG: `oklch(0.14 0.01 285)` (Rich Zinc 900).
+    -   Card BG: `oklch(0.20 0.01 285)` (Lighter Zinc 800).
 
 ---
 
-## 6. Navigation Structure
+## 4. Components & Shape Language
 
-### Mobile
-*   **Bottom Bar**: Primary navigation and "Add Expense" action are fixed at the bottom of the screen.
-*   **Reachability**: Critical actions are always within the "Thumb Zone".
+### Shapes: "Super-Rounded"
+-   **Cards**: `rounded-3xl` (24px) or `rounded-[2rem]` (32px).
+    -   *Why*: Feels organic and friendly, like a physical object.
+-   **Buttons**: `rounded-full` (Pill shape).
 
-### Desktop
-*   **Responsive**: The bottom bar may transition to a sidebar or top header, but the core "list" view remains centered.
+### The "Bill Card" (Bento Style)
+Instead of a single line item:
+-   **Container**: Large rounded rectangle.
+-   **Layout**: 
+    -   Left: Merchant Icon (large).
+    -   Middle: Title & Date.
+    -   Right: Amount (Colored by status).
+-   **Interaction**: Swipe right to "Settle", Swipe left to "Remind".
+
+### Navigation
+-   **Floating Tab Bar**: A floating pill listing "Groups | Friends | Account" at the bottom.
+-   **FAB**: A massive, glowing "+" button floating above the tab bar.
+
+---
+
+## 5. Spacing & Depth
+
+-   **Whitespace**: Generous. Minimum padding `p-6`.
+-   **Depth**: Minimal shadows. Depth is conveyed through **Color Layering** (Darker BG -> Lighter Card -> White Input).
+-   **Blur**: Heavy use of `backdrop-blur-md` on navigation elements to maintain context.
+
+---
+
+## 6. Implementation Checklist
+
+1.  [ ] **Update `globals.css`**: Inject new OKLCH Mint/Coral values.
+2.  [ ] **Add Fonts**: Import `Outfit` via `next/font`.
+3.  [ ] **Refactor Radius**: Update global radius to `1.5rem` minimum.
+4.  [ ] **Bento Dashboard**: Redesign Home screen to use Grid layout.

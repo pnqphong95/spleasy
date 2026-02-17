@@ -8,6 +8,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -45,37 +46,67 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Semantic Money Colors */
+  --color-money-in: var(--money-in);
+  --color-money-out: var(--money-out);
+  --color-money-settled: var(--money-settled);
 }
 
 :root {
-  --radius: 1.25rem;
+  --radius: 1.5rem;
+  /* Increased radius for "Trend Boutique" look */
+
   --background: oklch(0.985 0 0);
   --foreground: oklch(0.141 0.005 285.823);
+
+  /* Surface - White */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  /* Electric Indigo (Hue 276) */
+
+  /* Primary: Electric Indigo */
   --primary: oklch(0.55 0.22 276.0);
   --primary-foreground: oklch(1 0 0);
+
+  /* Secondary: Soft Zinc */
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.55 0.22 276.0);
-  /* Adaptive to primary */
+
+  /* Muted */
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
+
+  /* Accent */
   --accent: oklch(0.967 0.001 286.375);
   --accent-foreground: oklch(0.55 0.22 276.0);
-  /* Adaptive to primary */
+
+  /* Destructive */
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* Borders */
   --border: oklch(0.92 0.004 286.32);
   --input: oklch(0.92 0.004 286.32);
   --ring: oklch(0.55 0.22 276.0);
-  /* Matched to primary */
+
+  /* Semantic Money Colors (Light) */
+  --money-in: oklch(0.7 0.14 160);
+  /* Mint/Teal */
+  --money-out: oklch(0.65 0.18 15);
+  /* Coral/Rose */
+  --money-settled: oklch(0.6 0.04 260);
+  /* Slate */
+
+  /* Charts */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.55 0.22 276.0);
@@ -87,32 +118,55 @@
 }
 
 .dark {
+  /* Base - Zinc 900+ */
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
+
+  /* Surface - Lighter Zinc */
+  --card: oklch(0.20 0.01 285);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
+  --popover: oklch(0.20 0.01 285);
   --popover-foreground: oklch(0.985 0 0);
-  /* Electric Indigo - Dark Mode (Lighter) */
+
+  /* Primary: Electric Indigo (Lighter for Dark Mode) */
   --primary: oklch(0.70 0.19 276.0);
   --primary-foreground: oklch(0.141 0.005 285.823);
+
+  /* Secondary */
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
+
+  /* Muted */
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
+
+  /* Accent */
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
+
+  /* Destructive */
   --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  /* Borders */
   --border: oklch(0.274 0.006 286.033);
   --input: oklch(0.274 0.006 286.033);
   --ring: oklch(0.70 0.19 276.0);
-  /* Matched to primary */
+
+  /* Semantic Money Colors (Dark Mode Adjusted) */
+  --money-in: oklch(0.75 0.12 160);
+  --money-out: oklch(0.7 0.16 15);
+  --money-settled: oklch(0.7 0.04 260);
+
+  /* Charts */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
+
+  /* Sidebar */
+  --sidebar: oklch(0.20 0.01 285);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.70 0.19 276.0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
