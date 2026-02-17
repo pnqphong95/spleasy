@@ -13,10 +13,10 @@ export default async function GroupsPage({
   const defaultTab = typeof tab === 'string' && ['create', 'join'].includes(tab) ? tab : 'create';
 
   return (
-    <div className="container flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
+    <div className="container mx-auto flex min-h-screen items-center justify-center px-4">
       <div className="w-full max-w-md space-y-8">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold tracking-tight">Spleasy</h1>
+          <h1 className="font-heading text-3xl font-bold tracking-tight">Spleasy</h1>
           <p className="text-muted-foreground">Split expenses easily with friends.</p>
         </div>
 

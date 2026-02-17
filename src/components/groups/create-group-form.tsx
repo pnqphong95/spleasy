@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { groupService } from '@/infrastructure/firebase/group-repository';
 import { Button } from '@/components/ui/button';
@@ -59,9 +59,9 @@ export function CreateGroupForm({ lang }: { lang: string }) {
   const [placeholderName, setPlaceholderName] = useState('');
 
   // Set a random placeholder on client mount
-  useState(() => {
+  useEffect(() => {
     setPlaceholderName(getRandomGroupName());
-  });
+  }, []);
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
