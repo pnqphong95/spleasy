@@ -6,7 +6,7 @@ interface FaqSectionProps {
 
 export function FaqSection({ dict }: FaqSectionProps) {
   return (
-    <section className="bg-background border-t border-border/50 px-6 py-24">
+    <section className="bg-background border-border/50 border-t px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <h2 className="font-heading mb-16 text-center text-3xl font-bold tracking-tight sm:text-4xl">
           {dict.faq.title}

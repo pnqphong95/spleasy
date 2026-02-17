@@ -27,14 +27,14 @@ export function HeroSection({ dict }: HeroSectionProps) {
             <span className="text-primary mt-2 block">{dict.home.subtitle}</span>
           </h1>
 
-          <p className="text-muted-foreground mb-10 max-w-lg lg:max-w-2xl text-xl leading-relaxed text-balance">
+          <p className="text-muted-foreground mb-10 max-w-lg text-xl leading-relaxed text-balance lg:max-w-2xl">
             {dict.home.description}
           </p>
 
           <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
             <Link
               href="/create"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 active:scale-95 group flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold shadow-lg shadow-primary/20 transition-all duration-300 sm:w-auto"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 group shadow-primary/20 flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 sm:w-auto"
             >
               {dict.home.createGroup}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

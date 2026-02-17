@@ -7,7 +7,7 @@ interface FeaturesSectionProps {
 
 export function FeaturesSection({ dict }: FeaturesSectionProps) {
   return (
-    <section id="features" className="bg-muted/30 border-t border-b border-border/50 px-6 py-32">
+    <section id="features" className="bg-muted/30 border-border/50 border-t border-b px-6 py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
           <h2 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
@@ -20,15 +20,16 @@ export function FeaturesSection({ dict }: FeaturesSectionProps) {
 
         {/* Bento Grid Layout - Asymmetric Spans */}
         <div className="grid gap-6 md:grid-cols-3">
-
           {/* Large Card (Span 2) - Instant Access */}
           <div className="bg-background border-border/50 hover:border-primary/20 col-span-1 flex flex-col justify-between rounded-[2rem] border p-10 shadow-sm transition-all duration-300 hover:shadow-xl md:col-span-2">
             <div>
               <div className="bg-primary/10 text-primary mb-6 flex h-14 w-14 items-center justify-center rounded-2xl">
                 <Zap className="h-7 w-7" strokeWidth={1.5} />
               </div>
-              <h3 className="font-heading mb-3 text-2xl font-bold">{dict.features.instantAccess.title}</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+              <h3 className="font-heading mb-3 text-2xl font-bold">
+                {dict.features.instantAccess.title}
+              </h3>
+              <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
                 {dict.features.instantAccess.description}
               </p>
             </div>
@@ -40,7 +41,9 @@ export function FeaturesSection({ dict }: FeaturesSectionProps) {
               <Users className="h-7 w-7" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-heading mb-3 text-xl font-bold">{dict.features.splitEasy.title}</h3>
+              <h3 className="font-heading mb-3 text-xl font-bold">
+                {dict.features.splitEasy.title}
+              </h3>
               <p className="text-muted-foreground leading-relaxed">
                 {dict.features.splitEasy.description}
               </p>
@@ -53,7 +56,9 @@ export function FeaturesSection({ dict }: FeaturesSectionProps) {
               <ShieldCheck className="h-7 w-7" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-heading mb-2 text-xl font-bold">{dict.features.transparentSafe.title}</h3>
+              <h3 className="font-heading mb-2 text-xl font-bold">
+                {dict.features.transparentSafe.title}
+              </h3>
               <p className="text-muted-foreground leading-relaxed">
                 {dict.features.transparentSafe.description}
               </p>

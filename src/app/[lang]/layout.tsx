@@ -78,7 +78,10 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className={`${inter.variable} ${jakarta.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${jakarta.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <NextTopLoader showSpinner={false} color="var(--primary)" />
         <ThemeProvider
           attribute="class"

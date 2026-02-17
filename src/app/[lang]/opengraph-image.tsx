@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-
 export const alt = 'Spleasy - Split bills instantly';
 export const size = {
   width: 1200,
