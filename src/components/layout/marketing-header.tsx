@@ -7,9 +7,10 @@ import type { Dictionary } from '@/i18n/types';
 
 interface MarketingHeaderProps {
   dict: Dictionary;
+  lang: string;
 }
 
-export function MarketingHeader({ dict }: MarketingHeaderProps) {
+export function MarketingHeader({ dict, lang }: MarketingHeaderProps) {
   return (
     <header className="border-border/40 bg-background/80 sticky top-0 z-50 flex items-center justify-between border-b px-6 py-4 backdrop-blur-sm">
       <div className="flex items-center gap-2">
@@ -36,11 +37,14 @@ export function MarketingHeader({ dict }: MarketingHeaderProps) {
       <div className="hidden items-center gap-4 md:flex">
         <LanguageSwitcher />
         <ModeToggle />
-        <Link href="/join" className="hover:text-primary text-sm font-medium transition-colors">
+        <Link
+          href={`/${lang}/groups?tab=join`}
+          className="hover:text-primary text-sm font-medium transition-colors"
+        >
           {dict.navigation.joinGroup}
         </Link>
         <Link
-          href="/create"
+          href={`/${lang}/groups`}
           className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/20 rounded-full px-4 py-2 text-sm font-medium shadow-lg transition-colors"
         >
           {dict.navigation.startSplitting}
@@ -50,7 +54,7 @@ export function MarketingHeader({ dict }: MarketingHeaderProps) {
       {/* Mobile Header Actions */}
       <div className="flex items-center gap-2 md:hidden">
         <Link
-          href="/create"
+          href={`/${lang}/groups`}
           className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/20 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap shadow-lg transition-colors"
         >
           {dict.navigation.startSplitting}

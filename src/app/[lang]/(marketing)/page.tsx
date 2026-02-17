@@ -24,7 +24,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <>
-      <HeroSection dict={dict} />
+      <HeroSection dict={dict} lang={lang} />
       <FeaturesSection dict={dict} />
       <FaqSection dict={dict} />
       <JsonLd description={dict.metadata.description} />

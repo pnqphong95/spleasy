@@ -5,9 +5,10 @@ import type { Dictionary } from '@/i18n/types';
 
 interface HeroSectionProps {
   dict: Dictionary;
+  lang: string;
 }
 
-export function HeroSection({ dict }: HeroSectionProps) {
+export function HeroSection({ dict, lang }: HeroSectionProps) {
   return (
     <section className="relative mx-auto flex max-w-7xl flex-col items-center overflow-hidden px-4 pt-20 pb-32 text-center md:px-6 md:pt-32 md:pb-40">
       {/* Background blending elements - Updated to Violet/Primary */}
@@ -33,7 +34,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
 
           <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
             <Link
-              href="/create"
+              href={`/${lang}/groups`}
               className="bg-primary text-primary-foreground hover:bg-primary/90 group shadow-primary/20 flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 sm:w-auto"
             >
               {dict.home.createGroup}

@@ -15,7 +15,7 @@ export default async function MarketingLayout({
 
   return (
     <div className="bg-background text-foreground selection:bg-primary/20 selection:text-primary flex min-h-screen flex-col">
-      <MarketingHeader dict={dict} />
+      <MarketingHeader dict={dict} lang={lang} />
       <main className="flex-1">{children}</main>
       <MarketingFooter dict={dict} />
     </div>
