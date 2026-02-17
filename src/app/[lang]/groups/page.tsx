@@ -31,11 +31,7 @@ export default async function GroupsPage({
             <CreateGroupForm lang={lang} />
           </TabsContent>
           <TabsContent value="join">
-            <JoinGroupForm
-              key={typeof pin === 'string' ? pin : 'empty'}
-              lang={lang}
-              initialPin={typeof pin === 'string' ? pin : ''}
-            />
+            <JoinGroupForm lang={lang} initialPin={typeof pin === 'string' ? pin : ''} />
           </TabsContent>
         </Tabs>
       </div>

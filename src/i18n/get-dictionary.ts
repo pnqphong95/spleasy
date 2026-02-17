@@ -8,4 +8,9 @@ const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   vi: () => import('./dictionaries/vi.json').then((module) => module.default as Dictionary),
 };
 
-export const getDictionary = async (locale: Locale): Promise<Dictionary> => dictionaries[locale]();
+import { i18n } from './config';
+
+export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
+  const loader = dictionaries[locale] || dictionaries[i18n.defaultLocale];
+  return loader();
+};
