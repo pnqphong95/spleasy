@@ -23,7 +23,10 @@ export default function GroupDashboardPage() {
   const { getSession } = useSession();
 
   const session = getSession(groupId);
-  const currentUser = group?.members.find((m) => m.displayName === session?.userName) || null;
+  const currentUser =
+    group?.members.find((m) =>
+      session?.memberId ? m.id === session.memberId : m.displayName.toLowerCase() === session?.userName?.toLowerCase(),
+    ) || null;
 
   if (groupLoading) {
     return (

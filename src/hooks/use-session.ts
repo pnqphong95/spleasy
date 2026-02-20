@@ -6,6 +6,7 @@ export interface UserSession {
   groupId: string;
   groupName: string;
   userName: string;
+  memberId?: string;
   lastAccessed: number;
 }
 

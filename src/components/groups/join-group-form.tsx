@@ -82,14 +82,15 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
         return;
       }
 
-      await groupService.joinGroup(groupId, username.trim());
+      const member = await groupService.joinGroup(groupId, username.trim());
 
       const group = await groupService.getGroup(groupId);
       if (group) {
         saveSession({
           groupId: group.id,
           groupName: group.name,
-          userName: username.trim(),
+          userName: member.displayName,
+          memberId: member.id,
           lastAccessed: Date.now(),
         });
         router.push(`/${lang}/groups/${group.id}`);
