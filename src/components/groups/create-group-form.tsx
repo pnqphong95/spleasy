@@ -102,7 +102,9 @@ export function CreateGroupForm({ lang }: { lang: string }) {
       <form onSubmit={handleCreate}>
         <CardContent className="space-y-6">
           <div className="space-y-3">
-            <Label htmlFor="username" className="text-base">Name</Label>
+            <Label htmlFor="username" className="text-base">
+              Name
+            </Label>
             <Input
               id="username"
               placeholder="e.g. Alice"
@@ -112,7 +114,9 @@ export function CreateGroupForm({ lang }: { lang: string }) {
             />
           </div>
           <div className="space-y-3">
-            <Label htmlFor="groupName" className="text-base">Group Name <span className="text-muted-foreground font-normal">(Optional)</span></Label>
+            <Label htmlFor="groupName" className="text-base">
+              Group Name <span className="text-muted-foreground font-normal">(Optional)</span>
+            </Label>
             <Input
               id="groupName"
               placeholder={placeholderName ? `e.g. ${placeholderName}` : 'e.g. Sunny Friends'}
@@ -121,12 +125,14 @@ export function CreateGroupForm({ lang }: { lang: string }) {
             />
             <p className="text-muted-foreground text-xs">
               {placeholderName && (
-                <>Leave blank to use <strong>{placeholderName}</strong></>
+                <>
+                  Leave blank to use <strong>{placeholderName}</strong>
+                </>
               )}
             </p>
           </div>
         </CardContent>
-        <CardFooter className="sticky bottom-0 z-50 bg-card pt-6 pb-6 rounded-b-3xl">
+        <CardFooter className="bg-card sticky bottom-0 z-50 rounded-b-3xl pt-6 pb-6">
           <Button
             type="submit"
             className="h-12 w-full rounded-full text-lg font-medium shadow-sm transition-transform active:scale-[0.98]"

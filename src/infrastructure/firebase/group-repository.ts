@@ -88,6 +88,15 @@ export class GroupRepository implements IGroupService {
     }
     return null;
   }
+
+  async updateGroupName(groupId: string, newName: string): Promise<void> {
+    const groupRef = doc(db, 'groups', groupId);
+    await updateDoc(groupRef, {
+      name: newName,
+      normalizeName: newName.toLowerCase(),
+      updatedAt: Date.now(),
+    });
+  }
 }
 
 // Directly export the Firestore implementation

@@ -5,4 +5,5 @@ export interface IGroupService {
   getGroup(id: string): Promise<Group | null>;
   joinGroup(groupId: string, memberName: string): Promise<void>;
   findGroupIdByPin(pin: string): Promise<string | null>;
+  updateGroupName(groupId: string, newName: string): Promise<void>;
 }

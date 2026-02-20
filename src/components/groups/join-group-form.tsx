@@ -114,7 +114,9 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
       <form onSubmit={handleJoin}>
         <CardContent className="space-y-6 pt-2">
           <div className="space-y-3">
-            <Label htmlFor="join-username" className="text-base">Name</Label>
+            <Label htmlFor="join-username" className="text-base">
+              Name
+            </Label>
             <Input
               id="join-username"
               placeholder="e.g. Bob"
@@ -124,7 +126,9 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
             />
           </div>
           <div className="space-y-3 pt-2">
-            <Label htmlFor="pin" className="text-base">PIN</Label>
+            <Label htmlFor="pin" className="text-base">
+              PIN
+            </Label>
             <Input
               id="pin"
               placeholder="123456"
@@ -132,16 +136,16 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
               value={pin}
               onChange={(e) => setPin(e.target.value.replace(/[^0-9]/g, ''))}
               required
-              className="text-center font-mono text-3xl tracking-[0.4em] tabular-nums h-16 rounded-2xl"
+              className="h-16 rounded-2xl text-center font-mono text-3xl tracking-[0.4em] tabular-nums"
             />
           </div>
           {error && (
-            <div className="bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium p-3 rounded-xl animate-in fade-in slide-in-from-top-2 duration-300">
+            <div className="bg-destructive/10 border-destructive/20 text-destructive animate-in fade-in slide-in-from-top-2 rounded-xl border p-3 text-sm font-medium duration-300">
               {error}
             </div>
           )}
         </CardContent>
-        <CardFooter className="sticky bottom-0 z-50 bg-card pt-6 pb-6 rounded-b-3xl">
+        <CardFooter className="bg-card sticky bottom-0 z-50 rounded-b-3xl pt-6 pb-6">
           <Button
             type="submit"
             className="h-12 w-full rounded-full text-lg font-medium shadow-sm transition-transform active:scale-[0.98]"

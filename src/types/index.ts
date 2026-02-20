@@ -14,3 +14,16 @@ export interface Group {
   currency: string; // Default "VND"
   members: Member[];
 }
+
+export interface Expense {
+  id: string;
+  groupId: string;
+  description: string; // "Dinner at Market"
+  amount: number; // 500000
+  payerId: string; // Reference to Member.id
+  payerName: string; // Snapshot of name (for history)
+  involvedMemberIds: string[]; // Who is splitting this bill?
+  createdAt: number; // Date.now() from server
+  createdBy: string; // Member.id of who entered it
+  type?: 'expense' | 'reimbursement'; // Defaults to 'expense'
+}
