@@ -62,21 +62,27 @@ export class GroupRepository implements IGroupService {
     }
   }
 
-  async joinGroup(groupId: string, memberName: string): Promise<void> {
-    const memberId = generateId();
-    const now = Date.now();
+  async joinGroup(groupId: string, memberName: string): Promise<Member> {
+    // Check if a member with the same name (case-insensitive) already exists
+    const group = await this.getGroup(groupId);
+    if (group) {
+      const existing = group.members.find(
+        (m) => m.displayName.toLowerCase() === memberName.toLowerCase(),
+      );
+      if (existing) return existing; // Claim the existing member — no duplicate created
+    }
 
     const newMember: Member = {
-      id: memberId,
+      id: generateId(),
       displayName: memberName,
-      joinedAt: now,
+      joinedAt: Date.now(),
     };
 
     const groupRef = doc(db, 'groups', groupId);
-
     await updateDoc(groupRef, {
       members: arrayUnion(newMember),
     });
+    return newMember;
   }
 
   async findGroupIdByPin(pin: string): Promise<string | null> {
