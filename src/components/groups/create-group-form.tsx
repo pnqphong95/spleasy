@@ -58,11 +58,11 @@ export function CreateGroupForm({ lang }: { lang: string }) {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
-  const [placeholderName] = useState(() => getRandomGroupName());
+  const [placeholderName, setPlaceholderName] = useState('');
 
   // Set a random placeholder on client mount
   useEffect(() => {
-    // Placeholder already set via initializer
+    setPlaceholderName(getRandomGroupName());
   }, []);
 
   const handleCreate = async (e: React.FormEvent) => {
@@ -86,6 +86,9 @@ export function CreateGroupForm({ lang }: { lang: string }) {
       router.push(`/${lang}/groups/${group.id}`);
     } catch (error) {
       console.error('Failed to create group:', error);
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        navigator.vibrate([100, 50, 100]);
+      }
     } finally {
       setLoading(false);
     }
@@ -94,13 +97,12 @@ export function CreateGroupForm({ lang }: { lang: string }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-2xl">Create a new group</CardTitle>
-        <CardDescription>Start managing expenses instantly.</CardDescription>
+        <CardTitle className="font-heading text-2xl">Create group</CardTitle>
       </CardHeader>
       <form onSubmit={handleCreate}>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="username">Your Name</Label>
+        <CardContent className="space-y-6">
+          <div className="space-y-3">
+            <Label htmlFor="username" className="text-base">Name</Label>
             <Input
               id="username"
               placeholder="e.g. Alice"
@@ -109,23 +111,29 @@ export function CreateGroupForm({ lang }: { lang: string }) {
               required
             />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="groupName">Group Name (Optional)</Label>
+          <div className="space-y-3">
+            <Label htmlFor="groupName" className="text-base">Group Name <span className="text-muted-foreground font-normal">(Optional)</span></Label>
             <Input
               id="groupName"
-              placeholder={placeholderName ? `e.g. ${placeholderName}` : 'e.g. Weekend Trip'}
+              placeholder={placeholderName ? `e.g. ${placeholderName}` : 'e.g. Sunny Friends'}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <p className="text-muted-foreground text-xs">
-              If empty, we&apos;ll name it <strong>{placeholderName}</strong> for you!
+              {placeholderName && (
+                <>Leave blank to use <strong>{placeholderName}</strong></>
+              )}
             </p>
           </div>
         </CardContent>
-        <CardFooter className="pt-2">
-          <Button type="submit" className="w-full" disabled={loading || !username.trim()}>
-            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            Start Spleasing
+        <CardFooter className="sticky bottom-0 z-50 bg-card pt-6 pb-6 rounded-b-3xl">
+          <Button
+            type="submit"
+            className="h-12 w-full rounded-full text-lg font-medium shadow-sm transition-transform active:scale-[0.98]"
+            disabled={loading || !username.trim()}
+          >
+            {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : null}
+            Create
           </Button>
         </CardFooter>
       </form>

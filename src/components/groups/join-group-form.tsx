@@ -75,6 +75,9 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
 
       if (!groupId) {
         setError('Group not found. Please check the PIN.');
+        if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+          navigator.vibrate([100, 50, 100]);
+        }
         setLoading(false);
         return;
       }
@@ -94,6 +97,9 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
     } catch (error) {
       console.error('Failed to join group:', error);
       setError('An error occurred. Please try again.');
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        navigator.vibrate([100, 50, 100]);
+      }
     } finally {
       setLoading(false);
     }
@@ -102,13 +108,13 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-2xl">Join a group</CardTitle>
-        <CardDescription>Enter the 6-digit PIN shared by your friends.</CardDescription>
+        <CardTitle className="font-heading text-2xl">Join group</CardTitle>
+        <CardDescription>Enter the 6-digit PIN.</CardDescription>
       </CardHeader>
       <form onSubmit={handleJoin}>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="join-username">Your Name</Label>
+        <CardContent className="space-y-6 pt-2">
+          <div className="space-y-3">
+            <Label htmlFor="join-username" className="text-base">Name</Label>
             <Input
               id="join-username"
               placeholder="e.g. Bob"
@@ -117,8 +123,8 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
               required
             />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="pin">Group PIN</Label>
+          <div className="space-y-3 pt-2">
+            <Label htmlFor="pin" className="text-base">PIN</Label>
             <Input
               id="pin"
               placeholder="123456"
@@ -126,19 +132,23 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
               value={pin}
               onChange={(e) => setPin(e.target.value.replace(/[^0-9]/g, ''))}
               required
-              className="text-center font-mono text-2xl tracking-[0.5em] tabular-nums"
+              className="text-center font-mono text-3xl tracking-[0.4em] tabular-nums h-16 rounded-2xl"
             />
           </div>
-          {error && <p className="text-destructive text-sm font-medium">{error}</p>}
+          {error && (
+            <div className="bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium p-3 rounded-xl animate-in fade-in slide-in-from-top-2 duration-300">
+              {error}
+            </div>
+          )}
         </CardContent>
-        <CardFooter className="pt-2">
+        <CardFooter className="sticky bottom-0 z-50 bg-card pt-6 pb-6 rounded-b-3xl">
           <Button
             type="submit"
-            className="w-full"
+            className="h-12 w-full rounded-full text-lg font-medium shadow-sm transition-transform active:scale-[0.98]"
             disabled={loading || !username.trim() || pin.length !== 6}
           >
-            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            Join Group
+            {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : null}
+            Join
           </Button>
         </CardFooter>
       </form>
