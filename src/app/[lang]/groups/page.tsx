@@ -17,7 +17,7 @@ export default async function GroupsPage({
     typeof tab === 'string' && ['create', 'join'].includes(tab) ? tab : pin ? 'join' : 'create';
 
   return (
-    <div className="container relative mx-auto flex min-h-[100dvh] flex-col items-center pt-8 pb-8 px-4 sm:justify-center">
+    <div className="relative container mx-auto flex min-h-[100dvh] flex-col items-center px-4 pt-8 pb-8 sm:justify-center">
       <BackLink fallbackHref={`/${lang}`} />
       <div className="w-full max-w-md space-y-6">
         <div className="flex flex-col items-center space-y-3 text-center">
