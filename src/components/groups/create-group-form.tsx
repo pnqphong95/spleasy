@@ -10,7 +10,6 @@ import { Label } from '@/components/ui/label';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -52,7 +51,15 @@ const getRandomGroupName = () => {
   return `${adj} ${noun}`;
 };
 
-export function CreateGroupForm({ lang }: { lang: string }) {
+import { Dictionary } from '@/i18n/types';
+
+export function CreateGroupForm({
+  lang,
+  dict,
+}: {
+  lang: string;
+  dict: Dictionary['groups']['create'];
+}) {
   const router = useRouter();
   const { saveSession } = useSession();
   const [loading, setLoading] = useState(false);
@@ -97,17 +104,17 @@ export function CreateGroupForm({ lang }: { lang: string }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-2xl">Create group</CardTitle>
+        <CardTitle className="font-heading text-2xl">{dict.title}</CardTitle>
       </CardHeader>
       <form onSubmit={handleCreate}>
         <CardContent className="space-y-6">
           <div className="space-y-3">
             <Label htmlFor="username" className="text-base">
-              Name
+              {dict.nameLabel}
             </Label>
             <Input
               id="username"
-              placeholder="e.g. Alice"
+              placeholder={dict.namePlaceholder}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -115,18 +122,23 @@ export function CreateGroupForm({ lang }: { lang: string }) {
           </div>
           <div className="space-y-3">
             <Label htmlFor="groupName" className="text-base">
-              Group Name <span className="text-muted-foreground font-normal">(Optional)</span>
+              {dict.groupNameLabel}{' '}
+              <span className="text-muted-foreground font-normal">{dict.groupNameOptional}</span>
             </Label>
             <Input
               id="groupName"
-              placeholder={placeholderName ? `e.g. ${placeholderName}` : 'e.g. Sunny Friends'}
+              placeholder={
+                placeholderName
+                  ? `${dict.groupNameHelp.split(' ')[0]} ${placeholderName}`
+                  : 'e.g. Sunny Friends'
+              }
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <p className="text-muted-foreground text-xs">
               {placeholderName && (
                 <>
-                  Leave blank to use <strong>{placeholderName}</strong>
+                  {dict.groupNameHelp} <strong>{placeholderName}</strong>
                 </>
               )}
             </p>
@@ -139,7 +151,7 @@ export function CreateGroupForm({ lang }: { lang: string }) {
             disabled={loading || !username.trim()}
           >
             {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : null}
-            Create
+            {dict.submit}
           </Button>
         </CardFooter>
       </form>

@@ -1,145 +1,88 @@
 'use client';
 
-import { MemberBalance } from '@/lib/balance';
+import { Settlement } from '@/lib/balance';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { ArrowDownLeft, ArrowUpRight, MinusCircle, HandCoins } from 'lucide-react';
-import { Group, Member } from '@/types';
-import { SettleUpDrawer } from './settle-up-drawer';
-import { Button } from '@/components/ui/button';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { getAvatarStyle } from '@/lib/avatar';
+import { Dictionary } from '@/i18n/types';
 
 interface BalanceListProps {
-  balances: MemberBalance[];
-  group: Group;
-  currentUser: Member | null;
+  settlements: Settlement[];
+  dict: Dictionary['dashboard']['balances'];
 }
 
-export function BalanceList({ balances, group, currentUser }: BalanceListProps) {
-  const formatCurrency = (val: number) => {
-    return new Intl.NumberFormat('vi-VN').format(Math.abs(val));
-  };
+export function BalanceList({ settlements, dict }: BalanceListProps) {
+  const formatCurrency = (val: number) => new Intl.NumberFormat('vi-VN').format(Math.abs(val));
+
+  if (settlements.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
+        <div className="bg-money-in/10 flex h-20 w-20 items-center justify-center rounded-3xl">
+          <CheckCircle2 className="text-money-in h-10 w-10" />
+        </div>
+        <h3 className="font-heading text-lg font-bold">{dict.settledAll}</h3>
+        <p className="text-muted-foreground max-w-[200px] text-sm">{dict.settled}</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="grid gap-4 pb-32">
+    <div className="flex flex-col gap-4 pb-32">
       <div className="flex items-center justify-between">
         <h2 className="font-heading text-muted-foreground text-sm font-bold tracking-widest uppercase">
-          Net Balances
+          {dict.title}
         </h2>
-        <span className="text-primary/60 text-xs font-bold">{balances.length} MEMBERS</span>
+        <span className="text-primary/60 text-xs font-bold">
+          {settlements.length} {dict.members}
+        </span>
       </div>
 
-      <div className="flex flex-col gap-3">
-        {balances.map((mb) => {
-          const isOwed = mb.balance > 0;
-          const isOwes = mb.balance < 0;
-          const isSettled = mb.balance === 0;
+      <div className="flex flex-col gap-2">
+        {settlements.map((s, i) => (
+          <Card
+            key={i}
+            className="bg-card/50 relative overflow-hidden border border-white/5 py-0 shadow-sm backdrop-blur-sm"
+          >
+            <div className="bg-money-out/5 pointer-events-none absolute -top-8 -left-8 h-20 w-20 rounded-full blur-2xl" />
 
-          return (
-            <Card key={mb.memberId} className="bg-card overflow-hidden border-none shadow-sm">
-              <CardContent className="flex items-center gap-4 p-4">
-                <div
-                  className={cn(
-                    'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl',
-                    isOwed
-                      ? 'bg-money-in/10 text-money-in'
-                      : isOwes
-                        ? 'bg-money-out/10 text-money-out'
-                        : 'bg-muted text-muted-foreground',
-                  )}
-                >
-                  <span className="text-lg font-bold">
-                    {mb.memberDisplayName.slice(0, 1).toUpperCase()}
-                  </span>
+            <CardContent className="flex items-center gap-3 px-4 py-3">
+              {/* From avatar */}
+              <div
+                className={cn(
+                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-bold shadow-sm',
+                  getAvatarStyle(s.fromName),
+                )}
+              >
+                {s.fromName.slice(0, 1).toUpperCase()}
+              </div>
+
+              {/* Statement */}
+              <div className="flex min-w-0 flex-1 flex-col">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-foreground text-sm font-bold">{s.fromName}</span>
+                  <span className="text-muted-foreground text-xs">{dict.owesTo}</span>
+                  <span className="text-foreground text-sm font-bold">{s.toName}</span>
                 </div>
+                <span className="text-money-out text-base font-black tabular-nums">
+                  ₫{formatCurrency(s.amount)}
+                </span>
+              </div>
 
-                <div className="flex flex-1 flex-col truncate">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-foreground truncate font-bold">{mb.memberDisplayName}</h3>
-                    <div
-                      className={cn(
-                        'flex items-baseline gap-1 font-black tracking-tighter tabular-nums',
-                        isOwed
-                          ? 'text-money-in'
-                          : isOwes
-                            ? 'text-money-out'
-                            : 'text-muted-foreground',
-                      )}
-                    >
-                      <span className="text-xs font-bold">₫</span>
-                      <span className="text-xl">{formatCurrency(mb.balance)}</span>
-                    </div>
-                  </div>
+              {/* Arrow → to avatar */}
+              <ArrowRight className="text-muted-foreground/30 h-4 w-4 shrink-0" />
 
-                  <div className="mt-0.5 flex items-center gap-2">
-                    {isOwed && (
-                      <>
-                        <ArrowUpRight className="text-money-in h-3 w-3" />
-                        <span className="text-money-in/70 text-[10px] font-black tracking-wider uppercase">
-                          Is Owed
-                        </span>
-                      </>
-                    )}
-                    {isOwes && (
-                      <>
-                        <ArrowDownLeft className="text-money-out h-3 w-3" />
-                        <span className="text-money-out/70 text-[10px] font-black tracking-wider uppercase">
-                          Owes
-                        </span>
-                      </>
-                    )}
-                    {isSettled && (
-                      <>
-                        <MinusCircle className="text-muted-foreground h-3 w-3" />
-                        <span className="text-muted-foreground/70 text-[10px] font-black tracking-wider uppercase">
-                          Settled
-                        </span>
-                      </>
-                    )}
-                  </div>
-
-                  {/* Visual Debt Bar */}
-                  <div className="mt-3 flex items-center gap-3">
-                    <div className="bg-muted/50 h-1.5 flex-1 overflow-hidden rounded-full">
-                      <div
-                        className={cn(
-                          'h-full rounded-full transition-all duration-1000',
-                          isOwed ? 'bg-money-in' : isOwes ? 'bg-money-out' : 'bg-muted',
-                        )}
-                        style={{
-                          width: isSettled ? '0%' : '100%',
-                          opacity: 0.6,
-                        }}
-                      />
-                    </div>
-
-                    {!isSettled && (
-                      <SettleUpDrawer
-                        group={group}
-                        currentUser={currentUser}
-                        defaultSender={
-                          isOwes ? group.members.find((m) => m.id === mb.memberId) : undefined
-                        }
-                        defaultReceiver={
-                          isOwed ? group.members.find((m) => m.id === mb.memberId) : undefined
-                        }
-                        trigger={
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="h-8 gap-1.5 rounded-full px-3 text-[10px] font-bold tracking-wider uppercase"
-                          >
-                            <HandCoins className="h-3 w-3" />
-                            Settle
-                          </Button>
-                        }
-                      />
-                    )}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+              <div
+                className={cn(
+                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-bold shadow-sm',
+                  getAvatarStyle(s.toName),
+                )}
+              >
+                {s.toName.slice(0, 1).toUpperCase()}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
   );

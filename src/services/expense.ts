@@ -8,4 +8,5 @@ export interface IExpenseService {
     callback: (expenses: Expense[]) => void,
     onError?: (error: Error) => void,
   ): () => void;
+  deleteExpense(groupId: string, expenseId: string): Promise<void>;
 }

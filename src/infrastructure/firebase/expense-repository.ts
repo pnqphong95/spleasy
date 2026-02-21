@@ -6,6 +6,8 @@ import {
   orderBy,
   getDocs,
   onSnapshot,
+  deleteDoc,
+  doc,
 } from 'firebase/firestore';
 import { IExpenseService } from '../../services/expense';
 import { Expense } from '../../types';
@@ -59,6 +61,15 @@ export class ExpenseRepository implements IExpenseService {
         if (onError) onError(error);
       },
     );
+  }
+
+  async deleteExpense(groupId: string, expenseId: string): Promise<void> {
+    try {
+      await deleteDoc(doc(db, 'groups', groupId, 'expenses', expenseId));
+    } catch (error) {
+      console.error('Error deleting expense:', error);
+      throw error;
+    }
   }
 }
 
