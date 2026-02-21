@@ -116,7 +116,7 @@ export function AddExpenseDrawer({
         )}
       </DrawerTrigger>
 
-      <DrawerContent className="rounded-t-[2rem] focus:outline-none [&[data-state=closed]]:duration-200">
+      <DrawerContent className="flex max-h-[92dvh] flex-col rounded-t-[2rem] focus:outline-none [&[data-state=closed]]:duration-200">
         {/* Visually hidden title for screen reader accessibility */}
         <DrawerTitle className="sr-only">{dict.title}</DrawerTitle>
         {/* Drag handle */}
@@ -155,6 +155,7 @@ export function AddExpenseDrawer({
             inputMode="numeric"
             pattern="[0-9]*"
             className="absolute h-0 w-0 opacity-0"
+            style={{ fontSize: '16px' }}
             value={amount}
             onChange={handleAmountChange}
             onKeyDown={(e) => {
@@ -163,13 +164,14 @@ export function AddExpenseDrawer({
           />
         </div>
 
-        <div className="flex flex-col gap-3 px-5 pb-5">
+        <div className="flex flex-col gap-3 overflow-y-auto px-5 pb-8">
           {/* ─── Description ─── */}
           <input
             ref={descRef}
             type="text"
             placeholder={dict.descriptionPlaceholder}
-            className="bg-muted/40 placeholder:text-muted-foreground/40 focus:bg-muted/60 h-11 w-full rounded-2xl border-none px-4 text-sm font-medium transition-colors outline-none"
+            className="bg-muted/40 placeholder:text-muted-foreground/40 focus:bg-muted/60 h-11 w-full rounded-2xl border-none px-4 font-medium transition-colors outline-none"
+            style={{ fontSize: '16px' }}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             onKeyDown={(e) => {
@@ -195,9 +197,9 @@ export function AddExpenseDrawer({
                         'flex h-10 w-10 items-center justify-center rounded-full text-xs font-black transition-all',
                         sel
                           ? cn(
-                              'ring-primary ring-offset-background scale-110 ring-2 ring-offset-2',
-                              getAvatarStyle(m.displayName),
-                            )
+                            'ring-primary ring-offset-background scale-110 ring-2 ring-offset-2',
+                            getAvatarStyle(m.displayName),
+                          )
                           : cn('opacity-40', getAvatarStyle(m.displayName)),
                       )}
                     >
@@ -238,9 +240,9 @@ export function AddExpenseDrawer({
                         'flex h-10 w-10 items-center justify-center rounded-full text-xs font-black transition-all',
                         sel
                           ? cn(
-                              'ring-primary ring-offset-background ring-2 ring-offset-2',
-                              getAvatarStyle(m.displayName),
-                            )
+                            'ring-primary ring-offset-background ring-2 ring-offset-2',
+                            getAvatarStyle(m.displayName),
+                          )
                           : cn('opacity-30', getAvatarStyle(m.displayName)),
                       )}
                     >
