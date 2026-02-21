@@ -17,7 +17,17 @@ import {
 } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 
-export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initialPin?: string }) {
+import { Dictionary } from '@/i18n/types';
+
+export function JoinGroupForm({
+  lang,
+  initialPin = '',
+  dict,
+}: {
+  lang: string;
+  initialPin?: string;
+  dict: Dictionary['groups']['join'];
+}) {
   const router = useRouter();
   const { saveSession } = useSession();
   const [loading, setLoading] = useState(false);
@@ -56,25 +66,17 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
     e.preventDefault();
     if (!username.trim() || !pin.trim()) return;
     if (pin.length !== 6) {
-      setError('PIN must be 6 digits');
+      setError(dict.errorPinLength);
       return;
     }
 
     setLoading(true);
     setError(null);
     try {
-      // In a real app, we'd probably have a way to find group by PIN
-      // For MVP, we might need to adjust the service to support findByPin or just use groupId if PIN=ID is not true
-      // Based on technical_design.md, PIN is shareable but ID is UUID.
-      // We need a way to resolve PIN to Group ID.
-
-      // Let's assume for now we need a findGroupByPin method in the service
-      // I'll check if I can add it to the repository.
-
       const groupId = await groupService.findGroupIdByPin(pin);
 
       if (!groupId) {
-        setError('Group not found. Please check the PIN.');
+        setError(dict.errorNotFound);
         if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
           navigator.vibrate([100, 50, 100]);
         }
@@ -97,7 +99,7 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
       }
     } catch (error) {
       console.error('Failed to join group:', error);
-      setError('An error occurred. Please try again.');
+      setError(dict.errorGeneric);
       if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
         navigator.vibrate([100, 50, 100]);
       }
@@ -109,18 +111,18 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-2xl">Join group</CardTitle>
-        <CardDescription>Enter the 6-digit PIN.</CardDescription>
+        <CardTitle className="font-heading text-2xl">{dict.title}</CardTitle>
+        <CardDescription>{dict.description}</CardDescription>
       </CardHeader>
       <form onSubmit={handleJoin}>
         <CardContent className="space-y-6 pt-2">
           <div className="space-y-3">
             <Label htmlFor="join-username" className="text-base">
-              Name
+              {dict.nameLabel}
             </Label>
             <Input
               id="join-username"
-              placeholder="e.g. Bob"
+              placeholder={dict.namePlaceholder}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -128,11 +130,11 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
           </div>
           <div className="space-y-3 pt-2">
             <Label htmlFor="pin" className="text-base">
-              PIN
+              {dict.pinLabel}
             </Label>
             <Input
               id="pin"
-              placeholder="123456"
+              placeholder={dict.pinPlaceholder}
               maxLength={6}
               value={pin}
               onChange={(e) => setPin(e.target.value.replace(/[^0-9]/g, ''))}
@@ -153,7 +155,7 @@ export function JoinGroupForm({ lang, initialPin = '' }: { lang: string; initial
             disabled={loading || !username.trim() || pin.length !== 6}
           >
             {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : null}
-            Join
+            {dict.submit}
           </Button>
         </CardFooter>
       </form>

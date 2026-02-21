@@ -32,7 +32,8 @@
     "joinGroup": "Vào nhóm",
     "startSplitting": "Chia tiền ngay",
     "language": "Ngôn ngữ",
-    "theme": "Giao diện"
+    "theme": "Giao diện",
+    "back": "Quay lại"
   },
   "home": {
     "badge": "Spleasy = Sẻ chia + Siêu dễ",
@@ -61,6 +62,130 @@
     }
   },
   "footer": {
-    "copyright": "Spleasy. Được xây dựng vì sự đơn giản."
+    "copyright": "Spleasy. Phát triển dựa trên sự tối giản."
+  },
+  "groups": {
+    "subtitle": "Chia sẻ chi phi một cách nhẹ nhàng.",
+    "tabs": {
+      "create": "Tạo nhóm",
+      "join": "Vào nhóm"
+    },
+    "create": {
+      "title": "Tạo nhóm",
+      "nameLabel": "Tên của bạn",
+      "namePlaceholder": "VD: An",
+      "groupNameLabel": "Tên nhóm",
+      "groupNameOptional": "(Tùy chọn)",
+      "groupNameHelp": "Để trống để sử dụng",
+      "submit": "Tạo nhóm"
+    },
+    "join": {
+      "title": "Vào nhóm",
+      "description": "Nhập mã PIN 6 chữ số.",
+      "nameLabel": "Tên của bạn",
+      "namePlaceholder": "VD: Bình",
+      "pinLabel": "Mã PIN",
+      "pinPlaceholder": "123456",
+      "submit": "Tham gia",
+      "errorPinLength": "Mã PIN phải có 6 chữ số",
+      "errorNotFound": "Không tìm thấy nhóm. Vui lòng kiểm tra lại mã PIN.",
+      "errorGeneric": "Đã có lỗi xảy ra. Vui lòng thử lại."
+    }
+  },
+  "dashboard": {
+    "loading": "Đang tải thông tin nhóm...",
+    "errorTitle": "Rất tiếc!",
+    "errorNotFound": "Chúng tôi không tìm thấy nhóm này.",
+    "errorBackHome": "Quay về trang chủ",
+    "tabs": {
+      "activity": "Chi tiêu",
+      "balances": "Thanh toán",
+      "settings": "Cài đặt"
+    },
+    "header": {
+      "pin": "Mã PIN",
+      "copyLink": "Sao chép liên kết",
+      "linkCopied": "Đã sao chép liên kết",
+      "shareTitle": "Tham gia nhóm: ",
+      "shareText": "Sử dụng Spleasy để chia tiền cho {name}. Mã PIN: {pin}",
+      "shareVia": "Chia sẻ qua..."
+    },
+    "activity": {
+      "title": "Chi tiêu",
+      "total": "TỔNG",
+      "loading": "Đang tải chi tiêu...",
+      "emptyTitle": "Chưa có chi tiêu",
+      "emptyDescription": "Mọi khoản chi tiêu như ăn tối, cafe hay du lịch sẽ hiện ở đây.",
+      "paidBy": "Người trả:",
+      "deleteLabel": "Xóa chi tiêu",
+      "deleteSuccess": "Đã xóa chi tiêu!",
+      "totalSpend": "Tổng nhóm",
+      "yourBalance": "Số dư của bạn"
+    },
+    "balances": {
+      "title": "Thanh toán",
+      "members": "THÀNH VIÊN",
+      "isOwed": "Được trả",
+      "owes": "Cần trả",
+      "settled": "Đã xong",
+      "settleButton": "Thanh toán",
+      "settledAll": "Mọi thứ đã thanh toán!",
+      "owesTo": "cần trả",
+      "totalSpend": "Tổng nhóm",
+      "yourBalance": "Số dư của bạn"
+    },
+    "addExpense": {
+      "title": "Thêm chi tiêu",
+      "amountLabel": "Số tiền",
+      "descriptionLabel": "Nội dung chi tiêu?",
+      "descriptionPlaceholder": "VD: Ăn tối, Taxi, Nước uống",
+      "paidByLabel": "Người trả",
+      "splitWithLabel": "Chia cho",
+      "selectAll": "Chọn tất cả",
+      "deselectAll": "Bỏ chọn",
+      "submit": "Lưu chi tiêu",
+      "submitting": "Đang lưu...",
+      "successToast": "Đã thêm chi tiêu thành công!",
+      "errorAmount": "Vui lòng nhập số tiền",
+      "errorDescription": "Vui lòng nhập nội dung chi tiêu",
+      "errorInvolved": "Chọn ít nhất một người để chia tiền",
+      "errorGeneric": "Không thể thêm chi tiêu"
+    },
+    "settleUp": {
+      "title": "Thanh toán",
+      "description": "Ghi nhận khoản trả tiền giữa các thành viên.",
+      "whoPaid": "Ai trả tiền?",
+      "toWhom": "Trả cho ai?",
+      "amountLabel": "Số tiền",
+      "submit": "Xác nhận thanh toán",
+      "submitting": "Đang xử lý...",
+      "errorDetails": "Vui lòng điền đầy đủ thông tin",
+      "errorSameUser": "Người gửi và người nhận không thể trùng nhau",
+      "successToast": "Đã tất toán nợ thành công!",
+      "errorGeneric": "Không thể tất toán nợ"
+    },
+    "settings": {
+      "title": "Cài đặt nhóm",
+      "groupNameLabel": "Tên nhóm",
+      "updateNameSuccess": "Đã cập nhật tên nhóm!",
+      "updateNameError": "Không thể cập nhật tên nhóm",
+      "quickAccessLabel": "Truy cập nhanh",
+      "copyPinSuccess": "Đã sao chép mã PIN!",
+      "copyLinkSuccess": "Đã sao chép liên kết!",
+      "shareTitle": "Tham gia {name} trên Spleasy",
+      "shareText": "Sử dụng mã PIN {pin} để tham gia nhóm và chia tiền ngay!",
+      "shareButton": "Chia sẻ",
+      "membersLabel": "Thành viên trong nhóm",
+      "membersTotal": "TỔNG",
+      "joinedAt": "Đã tham gia",
+      "comingSoon": "Thêm nhiều cài đặt sẽ sớm ra mắt",
+      "leaveGroup": "Rời nhóm",
+      "leaveGroupConfirm": "Bạn có chắc muốn rời khỏi nhóm này không?",
+      "appearance": "Giao diện",
+      "lightMode": "Sáng",
+      "darkMode": "Tối",
+      "language": "Ngôn ngữ",
+      "pinLabel": "Mã PIN nhóm"
+    }
   }
 }

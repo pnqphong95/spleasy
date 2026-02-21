@@ -32,7 +32,8 @@
     "joinGroup": "Join Group",
     "startSplitting": "Start Splitting",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "back": "Back"
   },
   "home": {
     "badge": "Spleasy = Split + Easy",
@@ -62,5 +63,129 @@
   },
   "footer": {
     "copyright": "Spleasy. Built for simplicity."
+  },
+  "groups": {
+    "subtitle": "Split expenses peacefully.",
+    "tabs": {
+      "create": "Create Group",
+      "join": "Join Group"
+    },
+    "create": {
+      "title": "Create group",
+      "nameLabel": "Name",
+      "namePlaceholder": "e.g. Alice",
+      "groupNameLabel": "Group Name",
+      "groupNameOptional": "(Optional)",
+      "groupNameHelp": "Leave blank to use",
+      "submit": "Create"
+    },
+    "join": {
+      "title": "Join group",
+      "description": "Enter the 6-digit PIN.",
+      "nameLabel": "Name",
+      "namePlaceholder": "e.g. Bob",
+      "pinLabel": "PIN",
+      "pinPlaceholder": "123456",
+      "submit": "Join",
+      "errorPinLength": "PIN must be 6 digits",
+      "errorNotFound": "Group not found. Please check the PIN.",
+      "errorGeneric": "An error occurred. Please try again."
+    }
+  },
+  "dashboard": {
+    "loading": "Loading group details...",
+    "errorTitle": "Oops!",
+    "errorNotFound": "We couldn't find this group.",
+    "errorBackHome": "Go back home",
+    "tabs": {
+      "activity": "Expenses",
+      "balances": "Settlement",
+      "settings": "Settings"
+    },
+    "header": {
+      "pin": "PIN",
+      "copyLink": "Copy Link",
+      "linkCopied": "Link copied to clipboard",
+      "shareTitle": "Join our group: ",
+      "shareText": "Use Spleasy to split bills for {name}. PIN: {pin}",
+      "shareVia": "Share via..."
+    },
+    "activity": {
+      "title": "Expenses",
+      "total": "TOTAL",
+      "loading": "Loading expenses...",
+      "emptyTitle": "No expenses yet",
+      "emptyDescription": "Every dinner, coffee, or trip will show up here.",
+      "paidBy": "Paid by",
+      "deleteLabel": "Delete expense",
+      "deleteSuccess": "Expense deleted",
+      "totalSpend": "Group Total",
+      "yourBalance": "Your Balance"
+    },
+    "balances": {
+      "title": "Settlement",
+      "members": "MEMBERS",
+      "isOwed": "Is Owed",
+      "owes": "Owes",
+      "settled": "All settled",
+      "settleButton": "Settle",
+      "settledAll": "All settled up!",
+      "owesTo": "owes",
+      "totalSpend": "Group Total",
+      "yourBalance": "Your Balance"
+    },
+    "addExpense": {
+      "title": "Add Expense",
+      "amountLabel": "Amount",
+      "descriptionLabel": "What was it for?",
+      "descriptionPlaceholder": "e.g. Dinner, Taxi, Drinks",
+      "paidByLabel": "Paid By",
+      "splitWithLabel": "Split With",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect All",
+      "submit": "Save Expense",
+      "submitting": "Saving...",
+      "successToast": "Expense added successfully!",
+      "errorAmount": "Please enter an amount",
+      "errorDescription": "Please enter a description",
+      "errorInvolved": "Select at least one person to split with",
+      "errorGeneric": "Failed to add expense"
+    },
+    "settleUp": {
+      "title": "Settle Up",
+      "description": "Record a payment from one member to another.",
+      "whoPaid": "Who paid?",
+      "toWhom": "To whom?",
+      "amountLabel": "Amount",
+      "submit": "Confirm Settle Up",
+      "submitting": "Processing...",
+      "errorDetails": "Please fill in all details",
+      "errorSameUser": "Sender and receiver cannot be the same",
+      "successToast": "Debt settled successfully!",
+      "errorGeneric": "Failed to settle debt"
+    },
+    "settings": {
+      "title": "Group Settings",
+      "groupNameLabel": "Group Name",
+      "updateNameSuccess": "Group name updated!",
+      "updateNameError": "Failed to update group name",
+      "quickAccessLabel": "Quick Access",
+      "copyPinSuccess": "PIN copied to clipboard!",
+      "copyLinkSuccess": "Join link copied!",
+      "shareTitle": "Join {name} on Spleasy",
+      "shareText": "Use PIN {pin} to join our group and split bills instantly!",
+      "shareButton": "Share",
+      "membersLabel": "Group Members",
+      "membersTotal": "TOTAL",
+      "joinedAt": "Joined",
+      "comingSoon": "More group settings coming soon",
+      "leaveGroup": "Leave Group",
+      "leaveGroupConfirm": "Are you sure you want to leave this group?",
+      "appearance": "Appearance",
+      "lightMode": "Light",
+      "darkMode": "Dark",
+      "language": "Language",
+      "pinLabel": "Group PIN"
+    }
   }
 }

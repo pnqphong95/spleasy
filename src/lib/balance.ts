@@ -56,6 +56,47 @@ export function calculateBalances(members: Member[], expenses: Expense[]): Membe
   return members.map((m) => ({
     memberId: m.id,
     memberDisplayName: m.displayName,
-    balance: Math.round(balanceMap[m.id] || 0), // Round to avoid float issues in currency
+    balance: Math.round(balanceMap[m.id] || 0),
   }));
+}
+
+export interface Settlement {
+  fromId: string;
+  fromName: string;
+  toId: string;
+  toName: string;
+  amount: number;
+}
+
+/**
+ * Calculates the minimum number of transactions to settle all debts.
+ * Uses a greedy algorithm: match the biggest debtor with the biggest creditor.
+ */
+export function calculateSettlements(balances: MemberBalance[]): Settlement[] {
+  const settlements: Settlement[] = [];
+  const debtors = balances.filter((b) => b.balance < 0).map((b) => ({ ...b, balance: -b.balance }));
+  const creditors = balances.filter((b) => b.balance > 0).map((b) => ({ ...b }));
+
+  debtors.sort((a, b) => b.balance - a.balance);
+  creditors.sort((a, b) => b.balance - a.balance);
+
+  let i = 0,
+    j = 0;
+  while (i < debtors.length && j < creditors.length) {
+    const pay = Math.min(debtors[i].balance, creditors[j].balance);
+    if (pay > 0) {
+      settlements.push({
+        fromId: debtors[i].memberId,
+        fromName: debtors[i].memberDisplayName,
+        toId: creditors[j].memberId,
+        toName: creditors[j].memberDisplayName,
+        amount: Math.round(pay),
+      });
+    }
+    debtors[i].balance -= pay;
+    creditors[j].balance -= pay;
+    if (debtors[i].balance < 1) i++;
+    if (creditors[j].balance < 1) j++;
+  }
+  return settlements;
 }

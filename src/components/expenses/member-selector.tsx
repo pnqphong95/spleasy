@@ -1,8 +1,7 @@
 'use client';
 
 import { Member } from '@/types';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Check, CheckCircle2 } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -14,6 +13,8 @@ interface MemberSelectorProps {
   onDeselectAll?: () => void;
   mode?: 'single' | 'multiple';
   label: string;
+  selectAllLabel?: string;
+  deselectAllLabel?: string;
 }
 
 export function MemberSelector({
@@ -24,6 +25,8 @@ export function MemberSelector({
   onDeselectAll,
   mode = 'multiple',
   label,
+  selectAllLabel = 'Select All',
+  deselectAllLabel = 'Deselect All',
 }: MemberSelectorProps) {
   const getInitials = (name: string) => {
     return name
@@ -49,7 +52,7 @@ export function MemberSelector({
             className="text-primary h-7 rounded-full text-xs font-bold"
             onClick={isAllSelected ? onDeselectAll : onSelectAll}
           >
-            {isAllSelected ? 'Deselect All' : 'Select All'}
+            {isAllSelected ? deselectAllLabel : selectAllLabel}
           </Button>
         )}
       </div>
